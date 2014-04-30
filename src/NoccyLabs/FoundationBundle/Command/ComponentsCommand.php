@@ -2,7 +2,8 @@
 
 namespace NoccyLabs\FoundationBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
+//use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\Console\Input\InputInterface;
@@ -15,8 +16,15 @@ use Symfony\Component\Console\Input\InputOption;
  *
  * @author noccy
  */
-class ComponentsCommand extends ContainerAwareCommand
+class ComponentsCommand extends Command implements ContainerAwareInterface
 {
+    protected $container;
+
+    public function setContainer(ContainerInterface $container=null)
+    {
+        $this->container = $container;
+    }
+
     protected function configure()
     {
         $this
@@ -28,8 +36,8 @@ class ComponentsCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $resources_dir = __DIR__ . "/../Resources";
-        $components_dir = $resources_dir . "/components";
-        $cdns_dir = $resources_dir . "/cdns";
+        $components_dir = $resources_dir . "/component";
+        $cdns_dir = $resources_dir . "/cdn";
 
         $verbose = ($output->getVerbosity() > 0);
         

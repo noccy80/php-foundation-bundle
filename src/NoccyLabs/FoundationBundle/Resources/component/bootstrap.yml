@@ -1,0 +1,8 @@
+component:
+    name: bootstrap
+    requires: [ jquery ]
+    version: 3.1.1
+    files:
+        - { name:js/bootstrap.min.js, type:javascript }
+        - { name:css/bootstrap.min.css, type:stylesheet }
+        
