@@ -1,0 +1,5 @@
+component:
+    name: fontawesome
+    version: 4.0.3
+    styles: [ css/font-awesome.css ]
+            

@@ -1,0 +1,11 @@
+parameters:
+#    noccy_labs_foundation.example.class: NoccyLabs\FoundationBundle\Example
+
+services:
+#    noccy_labs_foundation.example:
+#        class: %noccy_labs_foundation.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    noccylabs_foundation.twig.extension:    
+        class: NoccyLabs\FoundationBundle\Twig\FoundationExtension
+        tags:
+            - { name: twig.extension }
