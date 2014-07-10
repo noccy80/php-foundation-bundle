@@ -65,7 +65,7 @@ class FoundationExtension extends \Twig_Extension
         }
         if (in_array("bootstrap",$modules)) {
             $scripts[] = "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js";
-            $styles[]  = "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css":
+            $styles[]  = "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css";
         }
         if (in_array("bootstrap-theme",$modules)) {
             $styles[]  = "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css";
@@ -80,9 +80,15 @@ class FoundationExtension extends \Twig_Extension
             $styles[]  = "//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.css";
         }
         
+        $strout = null;
+        foreach($styles as $style) {
+            $strout .= sprintf("<link rel=\"stylesheet\" type=\"text/css\" href=\"%s\">\n", $style);
+        }
+        foreach($scripts as $script) {
+            $strout .= sprintf("<script type=\"text/javascript\" src=\"%s\"></script>\n", $script);
+        }
         
-        
-        return '';
+        return $strout;
     }
 
     /**
