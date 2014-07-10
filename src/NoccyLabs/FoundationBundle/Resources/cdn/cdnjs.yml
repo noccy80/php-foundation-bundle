@@ -1,0 +1,10 @@
+cdn:
+    name: cdnjs
+    info: cdnjs
+    path: "//cdnjs.cloudflare.com/{component}/{version}/{file}"
+    components:
+        - jquery
+        - bootstrap
+        - bootstrap-theme
+        - fontawesome
+        

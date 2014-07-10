@@ -1,0 +1,10 @@
+cdn:
+    name: netdna
+    info: netdna
+    path: "//netdna.bootstrapcdn.com/{component}/{version}/{file}"
+    components:
+        - jquery
+        - bootstrap
+        - bootstrap-theme
+        - fontawesome
+        

@@ -1,8 +1,0 @@
-cdn:
-    name: netdna
-    info: netdna
-    # components served by this cdn
-    components:
-        bootstrap: "//netdna.bootstrapcdn.com/bootstrap/{version}/{file}"
-        fontawesome: "//netdna.bootstrapcdn.com/font-awesome/{version}/{file}"
-    
