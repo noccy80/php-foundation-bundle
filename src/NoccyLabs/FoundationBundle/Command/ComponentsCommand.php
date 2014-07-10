@@ -28,7 +28,7 @@ class ComponentsCommand extends Command implements ContainerAwareInterface
     protected function configure()
     {
         $this
-            ->setName("foundation:components")
+            ->setName($this->getName()?:"foundation:components")
             ->setDescription("List available components")
         ;
     }

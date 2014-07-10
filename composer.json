@@ -9,11 +9,11 @@
         }
     ],
     "require": {
-        "symfony/yaml": "2.4.*",
-        "symfony/dependency-injection": "2.4.*"
+        "symfony/yaml": "2.*",
+        "symfony/dependency-injection": "2.*"
     },
     "require-dev": {
-        "symfony/console": "2.4.*"
+        "symfony/console": "2.*"
     },
     "autoload": {
         "psr-0": { "NoccyLabs\\":"src/" }

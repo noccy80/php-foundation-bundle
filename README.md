@@ -31,6 +31,15 @@ To use foundation, use the `foundation()` Twig tag in the head of your document:
     </head>
     ...
 
+You can also specifiy components with the foundation command:
+
+    {{ foundation([ "bootstrap", "typeahead" ]) }}
+
+To dump a static template with the required links and script tags, use the `foundation:dump`
+command.
+
+    $ app/console foundation:dump > app/Resources/views/foundation.html.twig
+
 ## Customizing and extending
 
 To add a new component, create `component.yml` in the `.../FoundationBundle/Resource/component`
