@@ -60,6 +60,19 @@ class FoundationExtension extends \Twig_Extension
         $modules = explode(",",$modules);
         $scripts = array();
         $styles  = array();
+        
+        $lib = new \NoccyLabs\FoundationBundle\Librarian();
+        foreach($modules as $module) {
+            $url = $lib->getLibraryUrl($module);
+            if (preg_match("/\.css$/i",$url)) {
+                $styles[] = $url;
+            } elseif (preg_match("/\.js$/i", $url)) {
+                $scripts[] = $url;
+            } else {
+                throw new \Exception("Not sure how to add {$url} to document");
+            }
+        }
+        /*
         if (in_array("jquery",$modules)) {
             $scripts[] = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js";
         }
@@ -79,6 +92,7 @@ class FoundationExtension extends \Twig_Extension
         if (in_array("css-octicons",$modules)) {
             $styles[]  = "//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.css";
         }
+        */
         
         $strout = null;
         foreach($styles as $style) {

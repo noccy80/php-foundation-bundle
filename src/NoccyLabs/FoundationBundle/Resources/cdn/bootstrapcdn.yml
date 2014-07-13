@@ -1,0 +1,21 @@
+cdn:
+    name: BootstrapCdn
+    libraries:
+        twitter-bootstrap-css: { url: //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css }
+        twitter-bootstrap: { url: //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js }
+        font-awesome: { url: //maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css }
+        bootswatch-amelia: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/amelia/bootstrap.min.css }
+        bootswatch-cerulean: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/cerulean/bootstrap.min.css }
+        bootswatch-cosmo: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/cosmo/bootstrap.min.css }
+        bootswatch-cyborg: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/cyborg/bootstrap.min.css }
+        bootswatch-darkly: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/darkly/bootstrap.min.css }
+        bootswatch-flatly: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/flatly/bootstrap.min.css }
+        bootswatch-journal: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/journal/bootstrap.min.css }
+        bootswatch-lumen: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/lumen/bootstrap.min.css }
+        bootswatch-readable: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/readable/bootstrap.min.css }
+        bootswatch-simplex: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css }
+        bootswatch-slate: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/slate/bootstrap.min.css }
+        bootswatch-spacelab: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/spacelab/bootstrap.min.css }
+        bootswatch-superhero: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css }
+        bootswatch-united: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/united/bootstrap.min.css }
+        bootswatch-yeti: { url: //maxcdn.bootstrapcdn.com/bootswatch/3.2.0/yeti/bootstrap.min.css }

@@ -2,7 +2,6 @@
 
 namespace NoccyLabs\FoundationBundle\Command;
 
-use NoccyLabs\FoundationBundle\Librarian;
 use Symfony\Component\Console\Command\Command;
 //use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -17,7 +16,7 @@ use Symfony\Component\Console\Input\InputOption;
  *
  * @author noccy
  */
-class ComponentsCommand extends Command implements ContainerAwareInterface
+class UpdateCommand extends Command implements ContainerAwareInterface
 {
     protected $container;
 
@@ -29,20 +28,25 @@ class ComponentsCommand extends Command implements ContainerAwareInterface
     protected function configure()
     {
         $this
-            ->setName($this->getName()?:"foundation:components")
+            ->setName($this->getName()?:"foundation:update")
             ->setDescription("List available components")
-            ->addArgument("match", InputArgument::OPTIONAL, "Find components matching string");
         ;
     }
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $match = $input->getArgument("match");
+        $resources_dir = __DIR__ . "/../Resources";
+        $components_dir = $resources_dir . "/component";
+        $cdns_dir = $resources_dir . "/cdn";
 
-        $lib = new Librarian();
-        $url = $lib->getLibraryUrl($match); 
-        
-        $output->writeln($url);
+        $cdn_cdnjs = new \NoccyLabs\FoundationBundle\Cdn\Cdnjs();
+        $cdn_cdnjs->update($cdns_dir);
+        $output->writeln("Updated cdnjs.yml");
+
+        $cdn_cdnjs = new \NoccyLabs\FoundationBundle\Cdn\BootstrapCdn();
+        $cdn_cdnjs->update($cdns_dir);
+        $output->writeln("Updated bootstrapcdn.yml");
+
         
     }
 }

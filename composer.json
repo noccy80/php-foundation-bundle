@@ -13,9 +13,13 @@
         "symfony/dependency-injection": "2.*"
     },
     "require-dev": {
-        "symfony/console": "2.*"
+        "symfony/console": "2.*",
+        "symfony/finder": "2.*"
     },
     "autoload": {
         "psr-0": { "NoccyLabs\\":"src/" }
-    }
+    },
+    "bin": [
+        "bin/foundation"
+    ]
 }

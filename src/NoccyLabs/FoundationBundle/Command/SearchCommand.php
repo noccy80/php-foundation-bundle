@@ -2,7 +2,6 @@
 
 namespace NoccyLabs\FoundationBundle\Command;
 
-use NoccyLabs\FoundationBundle\Librarian;
 use Symfony\Component\Console\Command\Command;
 //use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -11,13 +10,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
+use NoccyLabs\FoundationBundle\Librarian;
 
 /**
  * Description of ComponentsCommand
  *
  * @author noccy
  */
-class ComponentsCommand extends Command implements ContainerAwareInterface
+class SearchCommand extends Command implements ContainerAwareInterface
 {
     protected $container;
 
@@ -29,8 +29,8 @@ class ComponentsCommand extends Command implements ContainerAwareInterface
     protected function configure()
     {
         $this
-            ->setName($this->getName()?:"foundation:components")
-            ->setDescription("List available components")
+            ->setName($this->getName()?:"foundation:search")
+            ->setDescription("Find components")
             ->addArgument("match", InputArgument::OPTIONAL, "Find components matching string");
         ;
     }
@@ -40,9 +40,14 @@ class ComponentsCommand extends Command implements ContainerAwareInterface
         $match = $input->getArgument("match");
 
         $lib = new Librarian();
-        $url = $lib->getLibraryUrl($match); 
+        $libs_cdn = $lib->getLibraries(); 
         
-        $output->writeln($url);
+        foreach($libs_cdn as $library=>$sources) {
+            if (fnmatch("*{$match}*",$library)) {
+                $output->write(" - <comment>{$library}</comment> ");
+                $output->writeln("(<info>".join("</info>, <info>", array_column($sources,0))."</info>)");
+            }
+        }
         
     }
 }
