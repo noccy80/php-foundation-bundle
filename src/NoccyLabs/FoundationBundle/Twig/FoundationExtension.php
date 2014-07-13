@@ -72,27 +72,6 @@ class FoundationExtension extends \Twig_Extension
                 throw new \Exception("Not sure how to add {$url} to document");
             }
         }
-        /*
-        if (in_array("jquery",$modules)) {
-            $scripts[] = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js";
-        }
-        if (in_array("bootstrap",$modules)) {
-            $scripts[] = "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js";
-            $styles[]  = "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css";
-        }
-        if (in_array("bootstrap-theme",$modules)) {
-            $styles[]  = "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css";
-        }
-        if (in_array("typeahead",$modules)) {
-            $scripts[] = "//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js";
-        }
-        if (in_array("css-font-awesome",$modules)) {
-            $styles[]  = "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css";
-        }
-        if (in_array("css-octicons",$modules)) {
-            $styles[]  = "//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.css";
-        }
-        */
         
         $strout = null;
         foreach($styles as $style) {
