@@ -33,13 +33,11 @@ class Librarian
         if (!array_key_exists($library,$this->libraries)) {
             throw new \Exception("Requested foundation library {$library} not found");
         }
-        $lib = $this->libraries[$library];
-        if (count($lib)>1) {
-            $lib = $lib[rand(0,count($lib)-1)];
-        } else {
-            $lib = $lib[0];
-        }
-        return $lib[1];
+        $libs = $this->libraries[$library];
+        $libi = (int)rand(0,count($libs)-1);
+        list($cdn,$url) = $libs[$libi];
+        
+        return $url['url'];
     }
     
     protected function findLibraries($path)

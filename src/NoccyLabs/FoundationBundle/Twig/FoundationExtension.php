@@ -64,7 +64,7 @@ class FoundationExtension extends \Twig_Extension
         $lib = new \NoccyLabs\FoundationBundle\Librarian();
         foreach($modules as $module) {
             $url = $lib->getLibraryUrl($module);
-            if (preg_match("/\.css$/i",$url)) {
+            if (preg_match("/\.css$/i", $url)) {
                 $styles[] = $url;
             } elseif (preg_match("/\.js$/i", $url)) {
                 $scripts[] = $url;
