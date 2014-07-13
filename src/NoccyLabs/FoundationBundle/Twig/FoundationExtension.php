@@ -57,7 +57,9 @@ class FoundationExtension extends \Twig_Extension
     
     public function foundationFunction($modules="jquery,bootstrap")
     {
-        $modules = explode(",",$modules);
+        if (!is_array($modules)) {
+            $modules = explode(",",$modules);
+        }
         $scripts = array();
         $styles  = array();
         
