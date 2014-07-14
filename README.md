@@ -1,4 +1,4 @@
-NoccyLabs Foundation Bundle
+Re  NoccyLabs Foundation Bundle
 ===========================
 
 Building websites around modern JavaScript and responsive CSS libraries can be
@@ -9,15 +9,8 @@ useful foundation easy as pie.
 
 ## Configuration
 
-Create `app/config/foundation.yml` (or make it a copy of `share/foundation.yml.dist`)
-and modify it to include the components that you wish to use.
+No configuration needed at this time.
 
-    foundation:
-        cdns: [ netdna ]
-        components:
-            - jquery
-            - bootstrap
-            - bootstrap-theme
 
 ## Using
 
@@ -27,44 +20,40 @@ To use foundation, use the `foundation()` Twig tag in the head of your document:
     <head>
         <title>My Website</title>
         ...
-        {{ foundation() }}
+        {{ foundation('jquery,twitter-bootstrap') }}
     </head>
     ...
 
-You can also specifiy components with the foundation command:
+You can also specifiy components as an array if you prefer:
 
-    {{ foundation([ "bootstrap", "typeahead" ]) }}
+    {{ foundation([ "jquery", "twitter-bootstrap" ]) }}
+
+
+### Static template
+
+*not implemented*
 
 To dump a static template with the required links and script tags, use the `foundation:dump`
 command.
 
     $ app/console foundation:dump > app/Resources/views/foundation.html.twig
 
-## Customizing and extending
+### Finding usable components
 
-To add a new component, create `component.yml` in the `.../FoundationBundle/Resource/component`
-(where the name of the .yml file is *the component name*):
-
-    component:
-        name: my-component
-        version: 1.1
-        files:
-            - { name:js/script.js, type:javascript }
-            - { name:css/style.css, type:stylesheet }
-        sources:
-            # multiple versions, selected by the version field
-            mycdn: { src:"//static.mycdn.com/libs/mycomponent/{version}/{name}" }
-            # only has one version
-            othercdn: { src:"//other.cdn.net/jslib/mycomp/{name}" }
-
-This would make `my-component` available for you, and it would include one of
-the following based on the `cdn` field of your app config:
-
- * http(s)://static.mycdm.com/libs/mycomponent/1.1/js/script.js
- * http(s)://static.mycdm.com/libs/mycomponent/1.1/css/style.css
+    $ app/console foundation:search bootswatch
+     - bootswatch (Cdnjs)
+     - bootswatch-amelia (BootstrapCdn)
+     - bootswatch-cerulean (BootstrapCdn)
+     - bootswatch-cosmo (BootstrapCdn)
+     ...
+     
+ In this case, you should be able to add `bootswatch-cerulean` to your foundation
+ call to make your site use the cerulean bootswatch theme for bootstrap:
  
-...or...
-
- * http(s)://other.cdn.net/jslib/mycomp/js/script.js
- * http(s)://other.cdn.net/jslib/mycomp/css/style.css
+        {{ foundation([
+            'jquery', 
+            'twitter-bootstrap', 
+            'twitter-bootstrap-css',
+            'bootswatch-cerulean'
+        ]) }}
 
