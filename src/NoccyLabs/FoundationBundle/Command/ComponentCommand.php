@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputOption;
  *
  * @author noccy
  */
-class ComponentsCommand extends Command implements ContainerAwareInterface
+class ComponentCommand extends Command implements ContainerAwareInterface
 {
     protected $container;
 
@@ -29,20 +29,20 @@ class ComponentsCommand extends Command implements ContainerAwareInterface
     protected function configure()
     {
         $this
-            ->setName($this->getName()?:"foundation:components")
-            ->setDescription("List available components")
-            ->addArgument("match", InputArgument::OPTIONAL, "Find components matching string");
+            ->setName($this->getName()?:"foundation:component")
+            ->setDescription("Show information on a specific component")
+            ->addArgument("component", InputArgument::OPTIONAL, "Component name");
         ;
     }
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $match = $input->getArgument("match");
+        $match = $input->getArgument("component");
 
         $lib = new Librarian();
         $url = $lib->getLibraryUrl($match); 
         
-        $output->writeln($url);
+        $output->writeln("URL: {$url}");
         
     }
 }

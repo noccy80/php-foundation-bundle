@@ -6,7 +6,7 @@
 use Symfony\Component\Console\Application;
 
 $app = new Application("foundation-bundle", "1.0-dev");
-$app->add(new NoccyLabs\FoundationBundle\Command\ComponentsCommand("components"));
+$app->add(new NoccyLabs\FoundationBundle\Command\ComponentCommand("component"));
 $app->add(new NoccyLabs\FoundationBundle\Command\UpdateCommand("update"));
 $app->add(new NoccyLabs\FoundationBundle\Command\SearchCommand("search"));
 
