@@ -12,6 +12,16 @@ useful foundation easy as pie.
 No configuration needed at this time.
 
 
+## CDNs
+
+CDNs can be updated from the console, using the `foundation:update` action:
+
+    $ app/console foundation:update
+
+
+CdnJs and BootstrapCdn are included.
+
+
 ## Using
 
 To use foundation, use the `foundation()` Twig tag in the head of your document:
@@ -27,6 +37,20 @@ To use foundation, use the `foundation()` Twig tag in the head of your document:
 You can also specifiy components as an array if you prefer:
 
     {{ foundation([ "jquery", "twitter-bootstrap" ]) }}
+
+
+### Finding components
+
+Use the `foundation:search` command to find components:
+
+    $ app/console foundation:search jquery
+    ...
+
+To find the URL of a component, for testing:
+
+    $ app/console foundation:component jquery
+    ...
+
 
 
 ### Static template
