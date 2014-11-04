@@ -1,4 +1,0 @@
-component:
-    name: jquery
-    version: 2.0.3
-    scripts: [ js/jquery.min.js ]

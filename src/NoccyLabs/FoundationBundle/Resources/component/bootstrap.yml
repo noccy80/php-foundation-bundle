@@ -1,9 +1,0 @@
-component:
-    name: bootstrap
-    version: 3.1.1
-    files:
-        - { name:js/bootstrap.min.js, type:javascript }
-        - { name:css/bootstrap.min.css, type:stylesheet }
-    sources:
-        netdna: "//netdna.bootstrapcdn.com/bootstrap/{version}/{file}"
-        
