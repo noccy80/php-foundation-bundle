@@ -29,7 +29,7 @@ class UpdateCommand extends Command implements ContainerAwareInterface
     {
         $this
             ->setName($this->getName()?:"foundation:update")
-            ->setDescription("List available components")
+            ->setDescription("Update the list of components")
         ;
     }
     
