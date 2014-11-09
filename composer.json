@@ -2,6 +2,9 @@
     "name": "noccylabs/foundation-bundle",
     "description": "Quickly add bootstrap, jquery and more from CDNs",
     "license": "GPL-3.0",
+    "keywords": [
+        "bootstrap", "bootswatch", "jquery", "cdn"
+    ],
     "authors": [
         {
             "name": "Christopher Vagnetoft",
