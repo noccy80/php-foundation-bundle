@@ -2,19 +2,16 @@
 
 namespace NoccyLabs\FoundationBundle\Cdn;
 
-use Symfony\Component\Yaml\Yaml;
-
-class Cdnjs implements CdnInterface
+class Cdnjs extends AbstractCdn
 {
-    public function update($path)
+    public function getName()
     {
-        $temp_file = "/tmp/cdnjs.html.tmp";
-        if (file_exists($temp_file)) {
-            $html = file_get_contents($temp_file);
-        } else {
-            $html = file_get_contents("http://cdnjs.com/");
-            file_put_contents($temp_file, $html);
-        }
+        return "Cdnjs";
+    }
+
+    public function update()
+    {
+        $html = $this->getUrlContents("http://cdnjs.com");
         
         $dom = new \DOMDocument();
         @$dom->loadHtml($html);
@@ -35,22 +32,16 @@ class Cdnjs implements CdnInterface
                 if ($n == 1) { $url  = trim($row->nodeValue); }
             }
             if ($name && $url) {
+                if (strpos($url,"://")!==false) {
+                    $url = substr($url, strpos($url,"://")+1);
+                }
                 $libs[$name] = array(
                     "url"=>$url
                 );
             }
         }
         
-        $data = array(
-            "cdn" => array(
-                "name" => "Cdnjs",
-                "libraries" => $libs
-            )
-        );
-        
-        $yaml = Yaml::dump($data, 3);
-        file_put_contents($path."/cdnjs.yml", $yaml);
-        unlink($temp_file);
+        return $libs;
         
     }
 

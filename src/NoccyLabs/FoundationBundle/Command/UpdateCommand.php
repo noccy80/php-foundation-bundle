@@ -10,6 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
+use NoccyLabs\FoundationBundle\Cdn\Manager;
 
 /**
  * Description of ComponentsCommand
@@ -39,14 +40,10 @@ class UpdateCommand extends Command implements ContainerAwareInterface
         $components_dir = $resources_dir . "/component";
         $cdns_dir = $resources_dir . "/cdn";
 
-        $cdn_cdnjs = new \NoccyLabs\FoundationBundle\Cdn\Cdnjs();
-        $cdn_cdnjs->update($cdns_dir);
-        $output->writeln("Updated cdnjs.yml");
-
-        $cdn_cdnjs = new \NoccyLabs\FoundationBundle\Cdn\BootstrapCdn();
-        $cdn_cdnjs->update($cdns_dir);
-        $output->writeln("Updated bootstrapcdn.yml");
-
+        $manager = new Manager();
+        $manager->setPath($cdns_dir);
+        $manager->setOutput($output);
+        $manager->updateAll();
         
     }
 }
