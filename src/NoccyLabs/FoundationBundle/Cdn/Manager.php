@@ -21,10 +21,12 @@ class Manager implements LoggerAwareInterface
      */
     protected $logger;
     
+    /**
+     * @var Symfony\Component\Console\Output\OutputInterface The assigned output interface
+     */
     protected $output;
 
     /**
-     * Update the logger to use
      *
      * @param Psr\Log\LoggerInterface New logger interface or NULL to unset
      */
@@ -33,16 +35,30 @@ class Manager implements LoggerAwareInterface
         $this->logger = $logger;
     }
 
+    /**
+     *
+     * @param Symfony\Component\Console\Output\OutputInterface Output interface
+     */
     public function setOutput(OutputInterface $output=NULL)
     {
         $this->output = $output;
     }
     
+    /**
+     * Set the path where the .yml files are stored for the CDNs. This is
+     * normally in Resources/cdn of the bundle.
+     *
+     * @param string The path where the cdn .yml files are stored
+     */
     public function setPath($path)
     {
         $this->path = $path;
     }
     
+    /**
+     * Update all CDNs
+     *
+     */
     public function updateAll()
     {
         $cdns = array_merge(
@@ -55,6 +71,10 @@ class Manager implements LoggerAwareInterface
         }
     }
 
+    /**
+     * Update a single CDN
+     *
+     */
     public function update($id, CdnInterface $cdn) 
     {
         // Figure out the name of the .yml file to write
@@ -95,13 +115,23 @@ class Manager implements LoggerAwareInterface
         self::$default_cdns = $cdns;
     }
 
+    /**
+     * Write to the output interface using printf style.
+     *
+     *
+     */
     protected function write($fmt, $arg=null)
     {
         $str = (func_num_args() == 1)
                 ? $fmt
                 : call_user_func_array( "sprintf", func_get_args() )
                 ;
-        if ($this->output) { $this->output->write($str); }
+        if ($this->output) { 
+            $this->output->write($str); 
+        }
+        if ($this->logger) { 
+            $this->logger->debug( strip_tags($str) );
+        }
     }
 
 }

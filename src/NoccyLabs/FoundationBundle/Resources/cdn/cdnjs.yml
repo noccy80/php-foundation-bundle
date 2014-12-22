@@ -974,7 +974,7 @@ cdn:
         typeahead.js: { url: //cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js }
         typescript: { url: //cdnjs.cloudflare.com/ajax/libs/typescript/1.0.0/typescript.min.js }
         ui-selectablescroll: { url: //cdnjs.cloudflare.com/ajax/libs/ui-selectableScroll/0.1.4/selectableScroll.js }
-        uikit: { url: //cdnjs.cloudflare.com/ajax/libs/uikit/2.14.0/js/uikit.min.js }
+        uikit: { url: //cdnjs.cloudflare.com/ajax/libs/uikit/2.15.0/js/uikit.min.js }
         underscore-contrib: { url: //cdnjs.cloudflare.com/ajax/libs/underscore-contrib/0.3.0/underscore-contrib.min.js }
         underscore.js: { url: //cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js }
         underscore.string: { url: //cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js }
