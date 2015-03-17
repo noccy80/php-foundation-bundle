@@ -28,33 +28,16 @@ class FoundationExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('stars', array($this, 'starFilter'), array('is_safe' => array('html'))),
         );
     }
     
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('icon', array($this, 'iconFunction'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('foundation', array($this, 'foundationFunction'), array('is_safe' => array('html')))
         );
     }
 
-    public function starFilter($value, $max=5, $fill_color='gold', $empty_color='gray')
-    {
-        $out = null;
-        for($n = 1; $n <= (int)$max; $n++) {
-            $color = urlencode(((int)$value>=$n)?$fill_color:$empty_color);
-            $out.= "<span class=\"glyphicon glyphicon-star\" style=\"color:".$color.";\"></span>";
-        }
-        return $out;
-    }
-    
-    public function iconFunction($icon_classes)
-    {
-        return '<span class="'.$icon_classes.'"></span>';
-    }
-    
     public function foundationFunction($modules="jquery,bootstrap")
     {
         if (!is_array($modules)) {
